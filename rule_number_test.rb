@@ -20,7 +20,6 @@ describe RuleNumber do
   end
 
   it "alphas" do
-    skip
     sorted = %w{
       6.1(a) 
       6.1(b)
@@ -31,7 +30,6 @@ describe RuleNumber do
   end
 
   it "different levels" do
-    skip
     sorted = %w{
       6A
       6.1 
@@ -71,7 +69,6 @@ describe RuleNumber do
   end
 
   it "repeated" do
-    skip
     sorted = %w{
       6.1(a) 
       6.1(b) 
@@ -83,7 +80,6 @@ describe RuleNumber do
   end
 
   it "lots of text" do
-    skip
     sorted = [
       "NFA Compliance Rule 2-41",
       "NFA Interpretive Notice #9062",
@@ -94,7 +90,6 @@ describe RuleNumber do
   end
 
   it "dash" do
-    skip
     sorted = [
       "NFA Compliance Rule 2-41",
       "NFA Compliance Rule 2-42",
@@ -104,7 +99,6 @@ describe RuleNumber do
   end
 
   it "pound sign" do
-    skip
     sorted = [
       "NFA Compliance Rule #2",
       "NFA Compliance Rule #3",
@@ -114,7 +108,6 @@ describe RuleNumber do
   end
 
   it "extra spaces" do
-    skip
     sorted = [
       'NFA Compliance Rule 2-33',
       'NFA Compliance  Rule 2-34',
@@ -125,7 +118,6 @@ describe RuleNumber do
   end
 
   it "numbers at the end" do
-    skip
     sorted = [
       'Financial Requirements Section 4',
       'Financial Requirements Section 7',
@@ -138,7 +130,6 @@ describe RuleNumber do
   end
 
   it "all dots" do
-    skip
     sorted = %w{
       506
       506.A
@@ -157,7 +148,6 @@ describe RuleNumber do
   end
 
   it "more dots" do
-    skip
 
     sorted = %w{
       49.20(b)(3)
@@ -203,7 +193,6 @@ describe RuleNumber do
   end
 
   it "cfr" do
-    skip
     sorted = [
       '17 CFR 1.23(b)',
       '17 CFR 4.23(a)(12)',
@@ -216,7 +205,6 @@ describe RuleNumber do
   end
 
   it "punctuation" do
-    skip
     sorted = [
       'One, Too',
       'One, Tree',
