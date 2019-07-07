@@ -1,8 +1,11 @@
 require 'pry'
 
 class RuleNumber
+	attr :parsed_number
+
   def initialize(number)
   	@num = number
+  	@parsed_number = parsed_number_system unless only_integers
   end
 
 	# -1 means self < other
@@ -12,12 +15,11 @@ class RuleNumber
   	if only_integers
   		@num <=> other
   	else
-  		numbers1, numbers2 = parse_number_systems(@num.to_s, other.to_s)
   		@equivalent = true
   		while @equivalent
-  			numbers1.each_with_index { |number, i|
-  				@result = 1 if number.to_i > numbers2[i].to_i
-  				@result =  -1 if number.to_i  < numbers2[i].to_i
+  			parsed_number.each_with_index { |number, i|
+  				@result = 1 if number > other.parsed_number[i]
+  				@result =  -1 if number  < other.parsed_number[i]
   				@equivalent = false if @result
   			}
   		end
@@ -33,12 +35,11 @@ class RuleNumber
   	@num.scan(/a-zA-z/).empty? && @num.scan(/\D/).empty?
   end
 
-  def parse_number_systems(n, other)
-  	if n.rindex(' ')
+  def parsed_number_system
+  	if @num.rindex(' ')
 
   	else
-  		binding.pry
-  		return n.split('.'), other.split('.')
+  		return @num.gsub(')','').split(/[\.,\(,\-]/).reject(&:empty?).map(&:to_i)
   	end
   end
 end

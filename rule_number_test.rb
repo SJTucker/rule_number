@@ -20,7 +20,6 @@ describe RuleNumber do
   end
 
   it "alphas" do
-    skip
     sorted = %w{
       6.1(a) 
       6.1(b)
