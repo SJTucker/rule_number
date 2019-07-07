@@ -15,15 +15,7 @@ class RuleNumber
   	if only_integers
   		@num <=> other
   	else
-  		@equivalent = true
-  		while @equivalent
-  			parsed_number.each_with_index { |number, i|
-  				@result = 1 if number > other.parsed_number[i]
-  				@result =  -1 if number  < other.parsed_number[i]
-  				@equivalent = false if @result
-  			}
-  		end
-  		@result
+  		sort_numbers(other)
   	end
   end
 
@@ -41,5 +33,19 @@ class RuleNumber
   	else
   		return @num.gsub(')','').split(/[\.,\(,\-]/).reject(&:empty?).map(&:to_i)
   	end
+  end
+
+  def sort_numbers(other)
+  	@equivalent = true
+
+		while @equivalent
+			parsed_number.each_with_index { |number, i|
+				@result = 1 if number > other.parsed_number[i]
+				@result =  -1 if number  < other.parsed_number[i]
+				@equivalent = false if @result
+			}
+		end
+
+		@result
   end
 end
