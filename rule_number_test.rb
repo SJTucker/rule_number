@@ -47,7 +47,6 @@ describe RuleNumber do
   end
 
   it "romans" do
-    skip
     sorted = %w{
       6.1(i) 
       6.1(ii) 
@@ -148,7 +147,6 @@ describe RuleNumber do
   end
 
   it "more dots" do
-
     sorted = %w{
       49.20(b)(3)
       49.20(b)(4)
