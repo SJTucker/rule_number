@@ -16,22 +16,6 @@ class RuleNumber
   	sort_numbers(other)
   end
 
-  def to_s
-  	@num
-  end
-
-  def numeric?(num)
-    Float(num) != nil rescue false
-  end
-
-  #splits original number into components for comparison
-  #splits on ., (, -, and ' '
-  def parsed_number_system
-		nums = @num.split(/[\.,\(,\-, ]/).reject(&:empty?)
-		nums.map!{ |num| numeric?(num) ? num.gsub('#','').to_i : treat_char_as_num?(num) }
-		nums
-  end
-
   def sort_numbers(other)
 		parsed_number.each_with_index { |number, i|
 			other_number = other.parsed_number[i]
@@ -45,7 +29,23 @@ class RuleNumber
 		}
   end
 
+  #splits original number into components for comparison
+  #splits on ., (, -, and ' '
+  def parsed_number_system
+		nums = @num.split(/[\.,\(,\-, ]/).reject(&:empty?)
+		nums.map!{ |num| numeric?(num) ? num.gsub('#','').to_i : treat_char_as_num?(num) }
+		nums
+  end
+
   def numbers_equivalent_but_other_has_more_parts?(number, other_number, index)
   	number == other_number && index == parsed_number.length - 1 && !other_number.nil?
+  end
+
+  def to_s
+  	@num
+  end
+
+  def numeric?(num)
+    Float(num) != nil rescue false
   end
 end
